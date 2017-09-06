@@ -29,13 +29,13 @@ class NewsComments extends Component {
       })
   };
 
-  handleSumbit = () => {
+  handleSubmit = () => {
     const userId = localStorage.getItem("userId");
     if (!userId) {
       message.warning("请先登录")
     };
     const {uniquekey} = this.props;
-    const {content} = this.props.form.getFieldsValue;
+    const content = this.props.form.getFieldValue('content');
     const url = `http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=${userId}&uniquekey=${uniquekey}&commnet=${content}`;
 
     axios.get(url)
